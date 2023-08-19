@@ -14,35 +14,67 @@ function getComputerChoice() {
 if not a tie, figure out if win/loss and with which items
 */
 
+let yourScore = 0;
+let computerScore = 0;
+
 function playRound(playerSelection, computerSelection) {
 
+    playerSelection = playerSelection.toLowerCase();
+
     if (playerSelection === computerSelection) {
-        return console.log(`You tied! You both picked ${playerSelection}`);
+        return `You tied! You both picked ${playerSelection}`;
     } else {
         if (playerSelection === 'rock') {
             if (computerSelection === 'scissors') {
                 console.log(computerSelection);
-                return console.log(`You win! Rock beats scissors!`);
+                yourScore++;
+                return 'You win! Rock beats scissors!';
             } else {
                 console.log(computerSelection);
-                return console.log(`You lose! Paper beats rock!`)
+                computerScore++;
+                return 'You lose! Paper beats rock!';
             }
         } else if (playerSelection === 'scissors') {
             if (computerSelection === 'paper') {
                 console.log(computerSelection);
-                return console.log('You win! Scissors beats paper!')
+                yourScore++;
+                return 'You win! Scissors beats paper!';
             } else {
                 console.log(computerSelection);
-                return console.log('You lose! Rock beats scissors!')
+                computerScore++;
+                return 'You lose! Rock beats scissors!';
             }
         } else if (playerSelection === 'paper') {
             if (computerSelection === 'rock') {
                 console.log(computerSelection);
-                return console.log('You win! Paper beats rock!')
+                yourScore++;
+                return 'You win! Paper beats rock!';
             } else {
                 console.log(computerSelection);
-                return console.log('You lose! Scissors beats paper!')
+                computerScore++;
+                return 'You lose! Scissors beats paper!';
             }
     }
 }
+}
+
+function game() {
+
+    yourScore = 0;
+    computerScore = 0;
+
+    for (let i = 0; i < 5; i++) {
+        let yourMove = prompt('Rock, paper, or scissors?');
+        console.log('You picked ' + yourMove)
+        console.log(playRound(yourMove, getComputerChoice()));
+    }
+
+    if (yourScore > computerScore) {
+        alert(`YOU WIN! ${yourScore} - ${computerScore}`);
+    } else if (yourScore < computerScore) {
+        alert(`YOU LOSE! ${computerScore} - ${yourScore}`);
+    } else {
+        alert(`TIE! ${yourScore} - ${computerScore}`);
+    }
+    
 }
