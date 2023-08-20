@@ -63,11 +63,11 @@ function game() {
     yourScore = 0;
     computerScore = 0;
 
-    for (let i = 0; i < 5; i++) {
-        let yourMove = prompt('Rock, paper, or scissors?');
-        console.log('You picked ' + yourMove)
-        console.log(playRound(yourMove, getComputerChoice()));
-    }
+
+    let yourMove = prompt('Rock, paper, or scissors?');
+    console.log('You picked ' + yourMove)
+    console.log(playRound(yourMove, getComputerChoice()));
+    
 
     if (yourScore > computerScore) {
         alert(`YOU WIN! ${yourScore} - ${computerScore}`);
