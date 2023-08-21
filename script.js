@@ -78,3 +78,13 @@ function game() {
     }
     
 }
+
+const buttons = document.querySelectorAll('button');
+const rock = document.querySelector('.rock');
+
+buttons.forEach(btn => {
+    btn.addEventListener('click', function() {
+        playRound(btn.innerText, getComputerChoice());
+    })
+})
+
