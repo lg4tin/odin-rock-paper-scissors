@@ -1,3 +1,11 @@
+const buttons = document.querySelectorAll('button');
+const rock = document.querySelector('.rock');
+const results =document.querySelector('.results');
+const displayComputerScore = document.querySelector('.comp-score');
+const displayYourScore = document.querySelector('.your-score');
+const winLose = document.querySelector('.win-lose');
+
+
 function getComputerChoice() {
     let randomNum = Math.floor(Math.random() * 3);
 
@@ -79,19 +87,37 @@ function game() {
     
 }
 
-const buttons = document.querySelectorAll('button');
-const rock = document.querySelector('.rock');
-const results =document.querySelector('.results');
-const displayComputerScore = document.querySelector('.comp-score');
-const displayYourScore = document.querySelector('.your-score');
 
 
 
 buttons.forEach(btn => {
     btn.addEventListener('click', function() {
         playRound(btn.innerText, getComputerChoice());
-        displayComputerScore.innerText = computerScore;
-        displayYourScore.innertext = yourScore;
+        displayYourScore.innerText = `Your score is ${yourScore}`;
+        displayComputerScore.innerText = `The computer's score is ${computerScore}`;
+        checkForWin();
     })
 })
 
+function checkForWin() {
+    if (yourScore === 5) {
+        winLose.style.color = 'blue';
+        winLose.innerText = 'Congrats you won!'
+        setTimeout(() => {
+            reset();
+          }, 3000);
+    } else if (computerScore === 5) {
+        winLose.style.color = 'red';
+        winLose.innerText = 'Too bad, you lose!'
+        setTimeout(() => {
+            reset();
+          }, 3000);
+    }
+}
+
+function reset() {
+    yourScore = 0;
+    computerScore = 0;
+    displayYourScore.innerText = `Your score is ${yourScore}`;
+    displayComputerScore.innerText = `The computer's score is ${computerScore}`;
+}
