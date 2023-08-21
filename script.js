@@ -22,37 +22,37 @@ function playRound(playerSelection, computerSelection) {
     playerSelection = playerSelection.toLowerCase();
 
     if (playerSelection === computerSelection) {
-        return `You tied! You both picked ${playerSelection}`;
+        results.innerText = `You tied! You both picked ${playerSelection}`;
     } else {
         if (playerSelection === 'rock') {
             if (computerSelection === 'scissors') {
-                console.log(computerSelection);
+                computerSelection;
                 yourScore++;
-                return 'You win! Rock beats scissors!';
+                results.innerText = 'You win! Rock beats scissors!';
             } else {
-                console.log(computerSelection);
+                computerSelection;
                 computerScore++;
-                return 'You lose! Paper beats rock!';
+                results.innerText = 'You lose! Paper beats rock!';
             }
         } else if (playerSelection === 'scissors') {
             if (computerSelection === 'paper') {
-                console.log(computerSelection);
+                computerSelection;
                 yourScore++;
-                return 'You win! Scissors beats paper!';
+                results.innerText = 'You win! Scissors beats paper!';
             } else {
-                console.log(computerSelection);
+                computerSelection;
                 computerScore++;
-                return 'You lose! Rock beats scissors!';
+                results.innerText = 'You lose! Rock beats scissors!';
             }
         } else if (playerSelection === 'paper') {
             if (computerSelection === 'rock') {
-                console.log(computerSelection);
+                computerSelection;
                 yourScore++;
-                return 'You win! Paper beats rock!';
+                results.innerText = 'You win! Paper beats rock!';
             } else {
-                console.log(computerSelection);
+                computerSelection;
                 computerScore++;
-                return 'You lose! Scissors beats paper!';
+                results.innerText = 'You lose! Scissors beats paper!';
             }
     }
 }
@@ -81,10 +81,17 @@ function game() {
 
 const buttons = document.querySelectorAll('button');
 const rock = document.querySelector('.rock');
+const results =document.querySelector('.results');
+const displayComputerScore = document.querySelector('.comp-score');
+const displayYourScore = document.querySelector('.your-score');
+
+
 
 buttons.forEach(btn => {
     btn.addEventListener('click', function() {
         playRound(btn.innerText, getComputerChoice());
+        displayComputerScore.innerText = computerScore;
+        displayYourScore.innertext = yourScore;
     })
 })
 
