@@ -87,9 +87,6 @@ function game() {
     
 }
 
-
-
-
 buttons.forEach(btn => {
     btn.addEventListener('click', function() {
         playRound(btn.innerText, getComputerChoice());
@@ -120,4 +117,6 @@ function reset() {
     computerScore = 0;
     displayYourScore.innerText = `Your score is ${yourScore}`;
     displayComputerScore.innerText = `The computer's score is ${computerScore}`;
+    winLose.textContent = 'Whoever is first to 5 wins!';
+    results.textContent = 'Results: ?';
 }
